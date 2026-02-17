@@ -154,6 +154,14 @@ const Login = () => {
             </p>
           </div>
         </form>
+        <div className="text-center pt-4">
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+            Built with <span className="text-red-500">❤️</span> by{" "}
+            <span className="font-semibold text-gray-700 dark:text-gray-300">
+              Prince Kumar
+            </span>
+          </p>
+        </div>
       </motion.div>
     </div>
   );
