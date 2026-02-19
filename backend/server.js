@@ -4,12 +4,11 @@ dotenv.config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { logEmailConfigStatus } = require('./utils/email');
+// const { logEmailConfigStatus } = require('./utils/email');
 
 const app = express();
 
-// Log email config status at startup (no secrets)
-logEmailConfigStatus();
+// logEmailConfigStatus();
 
 // Middleware
 app.use(cors());
@@ -30,7 +29,6 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
@@ -39,7 +37,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Connect to MongoDB (NO localhost fallback)
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
@@ -55,4 +52,5 @@ mongoose.connect(process.env.MONGO_URI)
   });
 
 module.exports = app;
+
 
